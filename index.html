@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Student Performance Analytics Dashboard</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+<body>
+
+<div class="container">
+
+    <h1>Student Performance Analytics Dashboard</h1>
+
+    <!-- Dashboard Cards -->
+
+    <!-- Search Section -->
+
+    <!-- Charts -->
+
+    <!-- Student Records Table -->
+
+    <!-- Add Student Form -->
+
+</div>
+
+    <p>Track student records, visualize performance trends, and predict academic outcomes using data analytics.</p>
+    <div class="dashboard">
+
+    <div class="card">
+       <h2>{{ students|length }}</h2>
+       <p>Total Students</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ average_marks }}%</h2>
+        <p>Average Marks</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ average_attendance }}%</h2>
+        <p>Attendance</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ top_performers }}</h2>   
+        <p>Top Performers</p>
+    </div>
+
+</div>
+<h2>Performance Analytics</h2>
+
+<canvas id="marksChart"></canvas>
+
+<br><br>
+<canvas id="attendanceChart"></canvas>
+
+</body>
+<div class="controls">
+   <form method="GET">
+    <input
+        type="text"
+        name="search"
+        placeholder="Search Student">
+    <button type="submit">Search</button>
+</form>
+
+<a href="#add-student-form">
+    <button type="button">Add Student</button>
+</a>
+</div>
+<h2>Student Records</h2>
+
+<table>
+
+    <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Marks</th>
+    <th>Attendance</th>
+    <th>Action</th>
+</tr>
+
+        {% for student in students %}
+<tr>
+    <td>{{ student.id }}</td>
+    <td>{{ student.name }}</td>
+    <td>{{ student.marks }}</td>
+    <td>{{ student.attendance }}</td>
+
+    <td>
+        <a href="/edit/{{student.id}}">
+            <button>Edit</button>   
+        </a>    
+
+        <a href="/delete/{{student.id}}">
+            <button>Delete</button> 
+        </a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+</div>
+<div class="student-form" id="add-student-form">
+
+    <h2>Add New Student Record</h2>
+
+    <form action="/add_student" method="POST">
+
+        <input type="text" name="name" placeholder="Enter Student Name" required>
+
+        <input type="number" name="marks" placeholder="Enter Marks" required>
+
+        <input type="number" name="attendance" placeholder="Enter Attendance %" required>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const names = {{ names | tojson }};
+const marks = {{ marks | tojson }};
+const attendance = {{ attendance | tojson }};
+
+new Chart(document.getElementById('marksChart'), {
+    type: 'bar',
+    data: {
+        labels: names,
+        datasets: [{
+            label: 'Marks',
+            data: marks
+        }]
+    }
+});
+
+new Chart(document.getElementById('attendanceChart'), {
+    type: 'bar',
+    data: {
+        labels: names,
+        datasets: [{
+            label: 'Attendance %',
+            data: attendance
+        }]
+    }
+});
+</script>
+</body>
+</html>
