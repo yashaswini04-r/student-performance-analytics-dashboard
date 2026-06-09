@@ -1,0 +1,111 @@
+body{
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+h1{
+    color: blue;
+}
+
+.dashboard{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.card{
+    background: white;
+    width: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px gray;
+}
+
+.card h2{
+    color: blue;
+}
+table{
+    width: 80%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td{
+    border: 1px solid gray;
+    padding: 12px;
+}
+
+th{
+    background-color: blue;
+    color: white;
+}
+.controls{
+    width:80%;
+    margin:20px auto;
+    display:flex;
+    justify-content:space-between;
+}
+
+.controls input{
+    width:70%;
+    padding:10px;
+}
+
+.controls button{
+    padding:10px 20px;
+    background-color:blue;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+.student-form{
+    width:50%;
+    margin:30px auto;
+    text-align:center;
+}
+
+.student-form input{
+    width:90%;
+    padding:10px;
+    margin:10px 0;
+}
+
+.student-form button{
+    padding:10px 20px;
+    background-color:green;
+    color:white;
+    border:none;
+    border-radius:5px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    transition: 0.3s;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+canvas {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
